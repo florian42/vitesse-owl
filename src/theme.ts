@@ -1,28 +1,23 @@
-import { colors, VitesseThemes } from "./colors";
+import { colors, VitesseTheme } from "./colors";
 
-export default function getTheme({ style, name }) {
-  const pick = (options) => options[style];
-
-  const vitesse = (key: keyof typeof VitesseThemes) =>
-    pick({ light: VitesseThemes[key][1] });
-
+export default function getTheme() {
   const primer = colors;
 
-  const foreground = vitesse("foreground");
-  const background = vitesse("background");
-  const secondaryForeground = vitesse("secondaryForeground");
-  const border = vitesse("border");
-  const activeForeground = vitesse("activeForeground");
-  const activeBackground = vitesse("activeBackground");
-  const primary = vitesse("primary");
+  const foreground = VitesseTheme["foreground"];
+  const background = VitesseTheme["background"];
+  const secondaryForeground = VitesseTheme["secondaryForeground"];
+  const border = VitesseTheme["border"];
+  const activeForeground = VitesseTheme["activeForeground"];
+  const activeBackground = VitesseTheme["activeBackground"];
+  const primary = VitesseTheme["primary"];
 
   return {
-    name,
+    name: 'Vitesse Owl Light',
     colors: {
       focusBorder: "#00000000",
       foreground,
       descriptionForeground: secondaryForeground,
-      errorForeground: vitesse("red"),
+      errorForeground: VitesseTheme["red"],
 
       "textLink.foreground": primary,
       "textLink.activeForeground": primary,
@@ -31,43 +26,34 @@ export default function getTheme({ style, name }) {
       "textCodeBlock.background": background,
       "textPreformat.foreground": primer.gray[6],
       "textSeparator.foreground": primer.gray[3],
-
       "button.background": primary,
       "button.foreground": background,
       "button.hoverBackground": primary,
-
       "checkbox.background": activeBackground,
-      "checkbox.border": pick({ light: primer.gray[3], dark: primer.white }),
-
+      "checkbox.border": primer.gray[3],
       "dropdown.background": background,
       "dropdown.border": border,
       "dropdown.foreground": foreground,
       "dropdown.listBackground": activeBackground,
-
       "input.background": activeBackground,
       "input.border": border,
       "input.foreground": foreground,
       "input.placeholderForeground": secondaryForeground,
-
       "badge.foreground": background,
       "badge.background": secondaryForeground,
-
       "progressBar.background": primary,
-
       "titleBar.activeForeground": activeForeground,
       "titleBar.activeBackground": background,
       "titleBar.inactiveForeground": primer.gray[5],
       "titleBar.inactiveBackground": background,
       "titleBar.border": activeBackground,
-
       "activityBar.foreground": foreground,
-      "activityBar.inactiveForeground": vitesse("ignored"),
+      "activityBar.inactiveForeground": VitesseTheme["ignored"],
       "activityBar.background": background,
       "activityBarBadge.foreground": background,
       "activityBarBadge.background": activeForeground,
       "activityBar.activeBorder": primary,
       "activityBar.border": border,
-
       "sideBar.foreground": activeForeground,
       "sideBar.background": background,
       "sideBar.border": border,
@@ -75,7 +61,6 @@ export default function getTheme({ style, name }) {
       "sideBarSectionHeader.foreground": foreground,
       "sideBarSectionHeader.background": background,
       "sideBarSectionHeader.border": border,
-
       "list.hoverForeground": foreground,
       "list.inactiveSelectionForeground": foreground,
       "list.activeSelectionForeground": foreground,
@@ -84,26 +69,19 @@ export default function getTheme({ style, name }) {
       "list.activeSelectionBackground": activeBackground,
       "list.inactiveFocusBackground": background,
       "list.focusBackground": activeBackground,
-
-      "tree.indentGuidesStroke": pick({
-        light: primer.gray[2],
-        dark: primer.gray[1],
-      }),
-
+      "tree.indentGuidesStroke": primer.gray[2],
       "notificationCenterHeader.foreground": primer.gray[5],
       "notificationCenterHeader.background": background,
       "notifications.foreground": foreground,
       "notifications.background": background,
       "notifications.border": border,
-      "notificationsErrorIcon.foreground": vitesse("red"),
-      "notificationsWarningIcon.foreground": vitesse("orange"),
-      "notificationsInfoIcon.foreground": vitesse("blue"),
-
+      "notificationsErrorIcon.foreground": VitesseTheme["red"],
+      "notificationsWarningIcon.foreground": VitesseTheme["orange"],
+      "notificationsInfoIcon.foreground": VitesseTheme["blue"],
       "pickerGroup.border": primer.gray[2],
       "pickerGroup.foreground": foreground,
       "quickInput.background": background,
       "quickInput.foreground": foreground,
-
       "statusBar.foreground": activeForeground,
       "statusBar.background": background,
       "statusBar.border": border,
@@ -111,11 +89,9 @@ export default function getTheme({ style, name }) {
       "statusBar.debuggingBackground": activeBackground,
       "statusBar.debuggingForeground": activeForeground,
       "statusBarItem.prominentBackground": activeBackground,
-
       "editorGroupHeader.tabsBackground": background,
       "editorGroupHeader.tabsBorder": border,
       "editorGroup.border": border,
-
       "tab.activeForeground": foreground,
       "tab.inactiveForeground": primer.gray[5],
       "tab.inactiveBackground": background,
@@ -127,172 +103,92 @@ export default function getTheme({ style, name }) {
       "tab.activeBorder": border,
       "tab.unfocusedActiveBorder": border,
       "tab.activeBorderTop": background,
-
       "breadcrumb.foreground": primer.gray[5],
       "breadcrumb.focusForeground": foreground,
       "breadcrumb.activeSelectionForeground": primer.gray[6],
       "breadcrumbPicker.background": background,
-
       "editor.foreground": foreground,
       "editor.background": background,
       "editorWidget.background": background,
       "editor.foldBackground": background,
       "editor.lineHighlightBackground": activeBackground,
-      "editorLineNumber.foreground": vitesse("ignored"),
+      "editorLineNumber.foreground": VitesseTheme["ignored"],
       "editorLineNumber.activeForeground": activeForeground,
-      "editorIndentGuide.background": pick({
-        light: "#eff2f6",
-        dark: primer.gray[1],
-      }),
-      "editorIndentGuide.activeBackground": pick({
-        light: "#d7dbe0",
-        dark: primer.gray[2],
-      }),
-      "editorWhitespace.foreground": pick({
-        light: primer.gray[3],
-        dark: primer.gray[2],
-      }),
-      // 'editorCursor.foreground': primary,
-
-      "editor.findMatchBackground": pick({
-        light: "#e6cc7744",
-        dark: "#e6cc7722",
-      }),
-      "editor.findMatchHighlightBackground": pick({
-        light: "#e6cc7766",
-        dark: "#e6cc7744",
-      }),
-      "editor.inactiveSelectionBackground": pick({
-        light: "#0366d611",
-        dark: "#3392FF22",
-      }),
-      "editor.selectionBackground": pick({
-        light: "#1c6b4820",
-        dark: "#4d937520",
-      }),
-      "editor.selectionHighlightBackground": pick({
-        light: "#1c6b4830",
-        dark: "#4d937530",
-      }),
-      "editor.wordHighlightBackground": pick({
-        light: "#1c6b4805",
-        dark: "#1c6b4805",
-      }),
-      "editor.wordHighlightStrongBackground": pick({
-        light: "#1c6b4810",
-        dark: "#1c6b4810",
-      }),
-      "editorBracketMatch.background": pick({
-        light: "#1c6b4820",
-        dark: "#4d937520",
-      }),
-
-      "diffEditor.insertedTextBackground": pick({
-        light: "#1c6b4822",
-        dark: "#4d937522",
-      }),
-      "diffEditor.removedTextBackground": pick({
-        light: "#ab595920",
-        dark: "#ab595922",
-      }),
-
-      "scrollbar.shadow": pick({ light: "#6a737d33", dark: "#0008" }),
-      "scrollbarSlider.background": vitesse("faded"),
-      "scrollbarSlider.hoverBackground": vitesse("ignored"),
-      "scrollbarSlider.activeBackground": vitesse("ignored"),
+      "editorIndentGuide.background": "#eff2f6",
+      "editorIndentGuide.activeBackground": "#d7dbe0",
+      "editorWhitespace.foreground": primer.gray[3],
+      "editor.findMatchBackground": "#e6cc7744",
+      "editor.findMatchHighlightBackground": "#e6cc7766",
+      "editor.inactiveSelectionBackground": "#0366d611",
+      "editor.selectionBackground": "#1c6b4820",
+      "editor.selectionHighlightBackground": "#1c6b4830",
+      "editor.wordHighlightBackground": "#1c6b4805",
+      "editor.wordHighlightStrongBackground": "#1c6b4810",
+      "editorBracketMatch.background": "#1c6b4820",
+      "diffEditor.insertedTextBackground": "#1c6b4822",
+      "diffEditor.removedTextBackground": "#ab595920",
+      "scrollbar.shadow": "#6a737d33",
+      "scrollbarSlider.background": VitesseTheme["faded"],
+      "scrollbarSlider.hoverBackground": VitesseTheme["ignored"],
+      "scrollbarSlider.activeBackground": VitesseTheme["ignored"],
       "editorOverviewRuler.border": primer.white,
-
       "panel.background": background,
       "panel.border": border,
       "panelTitle.activeBorder": primary,
       "panelTitle.activeForeground": foreground,
       "panelTitle.inactiveForeground": primer.gray[5],
-      "panelInput.border": pick({
-        light: primer.gray[2],
-        dark: primer.gray[1],
-      }),
-
+      "panelInput.border": primer.gray[2],
       "terminal.foreground": foreground,
-      "terminal.ansiBrightBlack": pick({
-        light: VitesseThemes.background[0],
-        dark: VitesseThemes.foreground[1],
-      }),
-      "terminal.ansiBrightBlue": vitesse("blue"),
-      "terminal.ansiBrightCyan": vitesse("cyan"),
-      "terminal.ansiBrightGreen": vitesse("green"),
-      "terminal.ansiBrightMagenta": vitesse("magenta"),
-      "terminal.ansiBrightRed": vitesse("red"),
-      "terminal.ansiBrightWhite": pick({
-        light: VitesseThemes.foreground[0],
-        dark: VitesseThemes.background[1],
-      }),
-      "terminal.ansiBrightYellow": vitesse("yellow"),
-      "terminal.ansiBlack": pick({
-        light: VitesseThemes.background[0],
-        dark: VitesseThemes.foreground[1],
-      }),
-      "terminal.ansiBlue": vitesse("blue"),
-      "terminal.ansiCyan": vitesse("cyan"),
-      "terminal.ansiGreen": vitesse("green"),
-      "terminal.ansiMagenta": vitesse("magenta"),
-      "terminal.ansiRed": vitesse("red"),
-      "terminal.ansiWhite": pick({
-        light: VitesseThemes.foreground[0],
-        dark: VitesseThemes.background[1],
-      }),
-      "terminal.ansiYellow": vitesse("yellow"),
-
-      "gitDecoration.addedResourceForeground": vitesse("green"),
-      "gitDecoration.modifiedResourceForeground": vitesse("blue"),
-      "gitDecoration.deletedResourceForeground": vitesse("red"),
-      "gitDecoration.untrackedResourceForeground": vitesse("cyan"),
-      "gitDecoration.ignoredResourceForeground": vitesse("ignored"),
-      "gitDecoration.conflictingResourceForeground": vitesse("orange"),
-      "gitDecoration.submoduleResourceForeground": vitesse(
-        "secondaryForeground"
-      ),
-
-      "editorGutter.modifiedBackground": vitesse("blue"),
-      "editorGutter.addedBackground": vitesse("green"),
-      "editorGutter.deletedBackground": vitesse("red"),
-
+      "terminal.ansiBrightBlack": VitesseTheme.background[0],
+      "terminal.ansiBrightBlue": VitesseTheme["blue"],
+      "terminal.ansiBrightCyan": VitesseTheme["cyan"],
+      "terminal.ansiBrightGreen": VitesseTheme["green"],
+      "terminal.ansiBrightMagenta": VitesseTheme["magenta"],
+      "terminal.ansiBrightRed": VitesseTheme["red"],
+      "terminal.ansiBrightWhite": VitesseTheme.foreground[0],
+      "terminal.ansiBrightYellow": VitesseTheme["yellow"],
+      "terminal.ansiBlack": VitesseTheme.background[0],
+      "terminal.ansiBlue": VitesseTheme["blue"],
+      "terminal.ansiCyan": VitesseTheme["cyan"],
+      "terminal.ansiGreen": VitesseTheme["green"],
+      "terminal.ansiMagenta": VitesseTheme["magenta"],
+      "terminal.ansiRed": VitesseTheme["red"],
+      "terminal.ansiWhite": VitesseTheme.foreground[0],
+      "terminal.ansiYellow": VitesseTheme["yellow"],
+      "gitDecoration.addedResourceForeground": VitesseTheme["green"],
+      "gitDecoration.modifiedResourceForeground": VitesseTheme["blue"],
+      "gitDecoration.deletedResourceForeground": VitesseTheme["red"],
+      "gitDecoration.untrackedResourceForeground": VitesseTheme["cyan"],
+      "gitDecoration.ignoredResourceForeground": VitesseTheme["ignored"],
+      "gitDecoration.conflictingResourceForeground": VitesseTheme["orange"],
+      "gitDecoration.submoduleResourceForeground": VitesseTheme["secondaryForeground"],
+      "editorGutter.modifiedBackground": VitesseTheme["blue"],
+      "editorGutter.addedBackground": VitesseTheme["green"],
+      "editorGutter.deletedBackground": VitesseTheme["red"],
       "debugToolBar.background": background,
-      "editor.stackFrameHighlightBackground": pick({
-        light: primer.yellow[1],
-        dark: "#a707",
-      }),
-      "editor.focusedStackFrameHighlightBackground": pick({
-        light: primer.yellow[2],
-        dark: "#b808",
-      }),
-
-      "peekViewEditor.matchHighlightBackground": pick({ dark: "#ffd33d33" }),
-      "peekViewResult.matchHighlightBackground": pick({ dark: "#ffd33d33" }),
+      "editor.stackFrameHighlightBackground": primer.yellow[1],
+      "editor.focusedStackFrameHighlightBackground": primer.yellow[2],
       "peekViewEditor.background": background,
       "peekViewResult.background": background,
-
       "settings.headerForeground": foreground,
       "settings.modifiedItemIndicator": primary,
       "welcomePage.buttonBackground": primer.gray[1],
       "welcomePage.buttonHoverBackground": primer.gray[2],
-
-      "problemsErrorIcon.foreground": vitesse("red"),
-      "problemsWarningIcon.foreground": vitesse("orange"),
-      "problemsInfoIcon.foreground": vitesse("blue"),
-
-      "editorError.foreground": vitesse("red"),
-      "editorWarning.foreground": vitesse("orange"),
-      "editorInfo.foreground": vitesse("blue"),
-      "editorHint.foreground": vitesse("green"),
-
-      "editorGutter.commentRangeForeground": vitesse("ignored"),
-      "editorGutter.foldingControlForeground": vitesse("secondaryForeground"),
+      "problemsErrorIcon.foreground": VitesseTheme["red"],
+      "problemsWarningIcon.foreground": VitesseTheme["orange"],
+      "problemsInfoIcon.foreground": VitesseTheme["blue"],
+      "editorError.foreground": VitesseTheme["red"],
+      "editorWarning.foreground": VitesseTheme["orange"],
+      "editorInfo.foreground": VitesseTheme["blue"],
+      "editorHint.foreground": VitesseTheme["green"],
+      "editorGutter.commentRangeForeground": VitesseTheme["ignored"],
+      "editorGutter.foldingControlForeground": VitesseTheme["secondaryForeground"],
     },
     semanticHighlighting: true,
     semanticTokenColors: {
-      namespace: vitesse("namespace"),
-      interface: vitesse("interface"),
-      class: vitesse("class"),
+      namespace: VitesseTheme["namespace"],
+      interface: VitesseTheme["interface"],
+      class: VitesseTheme["class"],
     },
     tokenColors: [
       {
