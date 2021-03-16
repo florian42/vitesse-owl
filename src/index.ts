@@ -3,17 +3,13 @@ import getTheme from './theme'
 
 const lightTheme = getTheme({
   style: 'light',
-  name: 'Vitesse Light',
+  name: 'Vitesse Owl Light',
 })
 
-const darkTheme = getTheme({
-  style: 'dark',
-  name: 'Vitesse Dark',
-})
+
 
 fs.mkdir('./themes', { recursive: true })
   .then(() => Promise.all([
     fs.writeFile('./themes/light.json', JSON.stringify(lightTheme, null, 2)),
-    fs.writeFile('./themes/dark.json', JSON.stringify(darkTheme, null, 2)),
   ]))
   .catch(() => process.exit(1))
