@@ -30,7 +30,7 @@
   "contributes": {
     "themes": [
       {
-        "label": "Vitesse Light",
+        "label": "Vitesse Owl Light",
         "uiTheme": "vs",
         "path": "./themes/light.json"
       }
