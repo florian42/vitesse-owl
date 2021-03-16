@@ -1,0 +1,53 @@
+{
+  "name": "theme-vitesse-owl",
+  "displayName": "Vitesse Owl Theme",
+  "version": "0.1.0",
+  "description": "Vitesse Owl theme for VS Code",
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "vitesse",
+    "night-owl",
+    "light"
+  ],
+  "bugs": {
+    "url": "https://github.com/florian42/vitesse-owl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florian42/vitesse-owl"
+  },
+  "license": "MIT",
+  "publisher": "Florian",
+  "scripts": {
+    "build": "esno src/index.ts",
+    "dev": "nodemon --watch src -e ts --exec \"esno src/index.ts\"",
+    "vscode:prepublish": "npm run build",
+    "release": "npx bumpp --commit --tag --push && vsce publish"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Vitesse Light",
+        "uiTheme": "vs",
+        "path": "./themes/light.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.4.3",
+    "@types/color": "^3.0.1",
+    "color": "^3.1.2",
+    "eslint": "^7.21.0",
+    "esno": "^0.4.6",
+    "nodemon": "^2.0.3",
+    "tsup": "^4.6.1",
+    "typescript": "^4.2.3"
+  },
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "preview": true
+}
